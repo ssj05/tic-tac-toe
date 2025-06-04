@@ -1,0 +1,43 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #181a1b;
+  text-align: center;
+  color: #fff;
+}
+
+.start-div {
+  text-align: left;
+  width: 225px;
+  margin: 0 auto;
+}
+
+.players {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  margin: 24px auto;
+}
+
+.cell {
+  height: 75px;
+  width: 75px;
+  border: 1px solid #fff;
+  box-shadow: 0 0 0 2px #fff;
+  font-size: 50px;
+  line-height: 75px;
+  vertical-align: middle;
+}
+
+.cellContainer {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  width: 225px;
+  height: 225px;
+  margin: 24px auto;
+  text-align: center;
+}
