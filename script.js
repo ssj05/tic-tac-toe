@@ -1,5 +1,5 @@
 const game = (() => {
-  let cellvalue = ["", "", "", "", "", "", "", "", "", ""];
+  let cellvalue = ["", "", "", "", "", "", "", "", ""];
   const winIndex = [
     [0, 1, 2],
     [3, 4, 5],
@@ -10,17 +10,31 @@ const game = (() => {
     [0, 4, 8],
     [2, 4, 6],
   ];
+  const player1 = document.querySelector("#player1");
+  const player2 = document.querySelector("#player2");
+
   const cell = document.querySelectorAll(".cell");
   const statusText = document.querySelector(".statusText");
   const startBtn = document.querySelector(".start");
   const restartBtn = document.querySelector(".restart");
   let playing = false;
-  let currentPlayer = "X";
+  let currentPlayer = player1;
   const changePlayer = () => {
-    currentPlayer = currentPlayer == "X" ? "O" : "X";
+    currentPlayer = currentPlayer === player1 ? player2 : player1;
   };
+  const checkName = () => {
+    const name1 = player1.value.trim();
+    const name2 = player2.value.trim();
+    if (name1 === "" || name2 === "") {
+      alert("enter player name");
+      return;
+    }
+  };
+
   const start = () => {
     startBtn.addEventListener("click", () => {
+      checkName();
+      statusText.textContent = `${currentPlayer.value}'s turn`;
       playing = true;
     });
     initialize();
@@ -29,15 +43,28 @@ const game = (() => {
     cell.forEach((block) => block.addEventListener("click", cellClicked));
   };
   const cellClicked = function(event) {
+    checkName();
     const clickedCell = event.target;
     const index = clickedCell.getAttribute("cellindex");
-
-    if (cellvalue[index] != "" || !playing) {
+    if (
+      cellvalue[index] != "" ||
+      !playing ||
+      currentPlayer.getAttribute("value") === ""
+    ) {
       return;
     }
+    statusText.textContent =
+      currentPlayer.value === player1.value
+        ? `${player2.value}'s turn`
+        : `${player1.value}'s turn`;
 
-    cellvalue[index] = `${currentPlayer}`;
-    this.textContent = `${currentPlayer}`;
+    console.log(currentPlayer.value);
+    console.log(currentPlayer.getAttribute("sign"));
+
+    let currentSign = currentPlayer.getAttribute("sign");
+
+    cellvalue[index] = `${currentSign}`;
+    clickedCell.textContent = `${currentSign}`;
     checkWinner();
     changePlayer();
   };
@@ -59,7 +86,7 @@ const game = (() => {
       }
     }
     if (roundWon) {
-      statusText.textContent = `${currentPlayer} won`;
+      statusText.textContent = `${currentPlayer.value} won`;
       playing = false;
       return;
     } else if (!cellvalue.includes("")) {
@@ -70,14 +97,16 @@ const game = (() => {
 
   const restart = () => {
     restartBtn.addEventListener("click", () => {
-      cellvalue.forEach((block) => (block = ""));
+      cellvalue.fill("");
       cell.forEach((block) => {
         block.textContent = "";
-        block.removeEventListener("click", cellClicked);
       });
-      startBtn.removeEventListener();
-
-      start();
+      playing = true;
+      currentPlayer = player1;
+      statusText.textContent = `${currentPlayer.value}'s turn`;
+      cell.forEach((block) => {
+        block.addEventListener("click", cellClicked);
+      });
     });
   };
 

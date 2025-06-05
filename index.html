@@ -1,40 +1,42 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
-    <title>Tic Tac Toe</title>
-  </head>
 
-  <body>
-    <h1>Tic Tac Toe</h1>
-    <div class="players">
-      <label for="player1">
-        Player 1:
-        <input type="text" id="player1" name="player1" />
-      </label>
-      <label for="player2">
-        Player 2:
-        <input type="text" id="player2" name="player2" />
-      </label>
-    </div>
-    <div class="start-div">
-      <button class="start" type="button">Start</button>
-    </div>
-    <div class="cellContainer">
-      <div cellindex="0" class="cell"></div>
-      <div cellindex="1" class="cell"></div>
-      <div cellindex="2" class="cell"></div>
-      <div cellindex="3" class="cell"></div>
-      <div cellindex="4" class="cell"></div>
-      <div cellindex="5" class="cell"></div>
-      <div cellindex="6" class="cell"></div>
-      <div cellindex="7" class="cell"></div>
-      <div cellindex="8" class="cell"></div>
-    </div>
-    <div class="statusText"></div>
-    <button class="restart" type="button">Restart</button>
-    <script src="script.js"></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <title>Tic Tac Toe</title>
+</head>
+
+<body>
+  <h1>Tic Tac Toe</h1>
+  <div class="players">
+    <label for="player1">
+      Player 1: (X)
+      <input type="text" id="player1" name="player1" sign="X" required />
+    </label>
+    <label for="player2">
+      Player 2: (O)
+      <input type="text" id="player2" name="player2" sign="O" required />
+    </label>
+  </div>
+  <div class="start-div">
+    <button class="start" type="submit">Start</button>
+  </div>
+  <div class="cellContainer">
+    <div cellindex="0" class="cell"></div>
+    <div cellindex="1" class="cell"></div>
+    <div cellindex="2" class="cell"></div>
+    <div cellindex="3" class="cell"></div>
+    <div cellindex="4" class="cell"></div>
+    <div cellindex="5" class="cell"></div>
+    <div cellindex="6" class="cell"></div>
+    <div cellindex="7" class="cell"></div>
+    <div cellindex="8" class="cell"></div>
+  </div>
+  <div class="statusText"></div>
+  <button class="restart" type="button">Restart</button>
+  <script src="script.js"></script>
+</body>
+
 </html>

@@ -9,6 +9,10 @@ body {
   color: #fff;
 }
 
+button {
+  cursor: pointer;
+}
+
 .start-div {
   text-align: left;
   width: 225px;
@@ -31,6 +35,7 @@ body {
   font-size: 50px;
   line-height: 75px;
   vertical-align: middle;
+  cursor: pointer;
 }
 
 .cellContainer {
@@ -40,4 +45,9 @@ body {
   height: 225px;
   margin: 24px auto;
   text-align: center;
+}
+
+.statusText {
+  margin: 16px;
+  padding: 8px;
 }
